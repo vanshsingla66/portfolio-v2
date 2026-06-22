@@ -1,0 +1,131 @@
+.about__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.2rem;
+  margin-top: 3rem;
+}
+
+.about__bio {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.about__bio p {
+  color: var(--text-soft);
+  font-size: 1.08rem;
+}
+.about__bio strong {
+  color: var(--text);
+}
+
+.about__edu {
+  margin-top: auto;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.about__edu-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  color: var(--blue-bright);
+  margin-bottom: 0.4rem;
+}
+.about__edu strong {
+  font-size: 1.02rem;
+}
+.about__edu span {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+.about__edu-period {
+  color: var(--text-dim) !important;
+  font-size: 0.82rem !important;
+}
+
+.about__stats {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.about__stat {
+  padding: 1.5rem 1.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.about__stat::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(77, 124, 255, 0.18), transparent 70%);
+  pointer-events: none;
+}
+.about__stat-value {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 900;
+  line-height: 1;
+}
+.about__stat-label {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  margin-top: 0.5rem;
+}
+
+.about__exploring {
+  margin-top: 3rem;
+}
+.about__exploring-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: var(--blue-bright);
+}
+.about__explore-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+.about__explore-card {
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  font-weight: 600;
+  font-size: 0.98rem;
+  cursor: default;
+}
+.about__explore-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(77, 124, 255, 0.1);
+  border: 1px solid rgba(77, 124, 255, 0.2);
+  color: var(--blue-bright);
+  font-size: 1.25rem;
+}
+
+@media (max-width: 880px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+  .about__explore-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .about__explore-grid {
+    grid-template-columns: 1fr;
+  }
+}

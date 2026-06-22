@@ -1,0 +1,113 @@
+.gh__banner {
+  margin-top: 3rem;
+  padding: 1.6rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.gh__profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.gh__avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  background: var(--grad-accent);
+  color: #fff;
+  box-shadow: 0 8px 24px -10px var(--glow-purple);
+}
+.gh__handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.gh__handle:hover {
+  color: var(--blue-bright);
+}
+.gh__profile-sub {
+  display: block;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.gh__repos {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+.gh__repo {
+  display: block;
+  padding: 1.5rem;
+  height: 100%;
+}
+.gh__repo-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.7rem;
+}
+.gh__repo-icon {
+  color: var(--blue-bright);
+  flex-shrink: 0;
+}
+.gh__repo-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gh__repo-arrow {
+  margin-left: auto;
+  color: var(--text-dim);
+  transition: transform 0.3s, color 0.3s;
+}
+.gh__repo:hover .gh__repo-arrow {
+  color: var(--blue-bright);
+  transform: translate(2px, -2px);
+}
+.gh__repo-desc {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  min-height: 2.6em;
+}
+.gh__repo-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-top: 1.1rem;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+.gh__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.gh__lang-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.gh__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+@media (max-width: 540px) {
+  .gh__banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

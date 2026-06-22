@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070810"/>
+      <stop offset="100%" stop-color="#05060a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#aab9ff"/>
+      <stop offset="50%" stop-color="#c6a4ff"/>
+      <stop offset="100%" stop-color="#8fe9ff"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="15%" cy="10%" r="60%">
+      <stop offset="0%" stop-color="#4d7cff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#4d7cff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="92%" cy="95%" r="55%">
+      <stop offset="0%" stop-color="#a06bff" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#a06bff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <g font-family="Inter, system-ui, sans-serif">
+    <text x="80" y="250" font-size="34" letter-spacing="6" fill="#5b8cff" font-weight="600">FULL STACK · AI / ML</text>
+    <text x="78" y="360" font-size="110" font-weight="900" fill="#f1f3fb">Hi, I'm Vansh</text>
+    <text x="80" y="450" font-size="44" font-weight="700" fill="url(#accent)">Building AI-powered digital experiences.</text>
+    <text x="80" y="540" font-size="28" fill="#aab0c4" font-family="'JetBrains Mono', monospace">github.com/vanshsingla66 · linkedin.com/in/vansh-singla17</text>
+  </g>
+  <path d="M1020 150 L1080 270 L1140 150" fill="none" stroke="url(#accent)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+</svg>

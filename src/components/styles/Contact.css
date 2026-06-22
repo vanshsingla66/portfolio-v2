@@ -1,0 +1,127 @@
+.contact {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+.contact__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.contact__glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 400px;
+  max-width: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(120, 100, 255, 0.2),
+    transparent 70%
+  );
+  filter: blur(40px);
+}
+
+.contact__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact__title {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 900;
+  margin: 1rem 0;
+}
+.contact__lead {
+  color: var(--text-soft);
+  max-width: 540px;
+  font-size: 1.08rem;
+  margin-bottom: 2rem;
+}
+
+.contact__cards {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 3.5rem;
+}
+.contact__card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 1.5rem;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.contact__card:hover {
+  border-color: color-mix(in srgb, var(--card-accent) 50%, transparent);
+}
+.contact__card-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 13px;
+  font-size: 1.4rem;
+  color: var(--card-accent);
+  background: color-mix(in srgb, var(--card-accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 30%, transparent);
+  transition: transform 0.3s;
+}
+.contact__card:hover .contact__card-icon {
+  transform: scale(1.08);
+}
+.contact__card-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.contact__card-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.contact__card-value {
+  font-weight: 600;
+  font-size: 0.98rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.contact__card-arrow {
+  margin-left: auto;
+  color: var(--text-dim);
+  transition: transform 0.3s, color 0.3s;
+}
+.contact__card:hover .contact__card-arrow {
+  color: var(--card-accent);
+  transform: translate(2px, -2px);
+}
+
+.contact__location {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 760px) {
+  .contact__cards {
+    grid-template-columns: 1fr;
+  }
+}

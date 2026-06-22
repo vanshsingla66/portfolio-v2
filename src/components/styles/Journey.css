@@ -1,0 +1,81 @@
+.journey__timeline {
+  position: relative;
+  margin-top: 3rem;
+  padding-left: 2.4rem;
+}
+
+.journey__line {
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  transform-origin: top;
+  background: linear-gradient(
+    180deg,
+    var(--blue) 0%,
+    var(--purple) 60%,
+    transparent 100%
+  );
+}
+
+.journey__item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.journey__item:last-child {
+  margin-bottom: 0;
+}
+
+.journey__node {
+  position: absolute;
+  left: -2.4rem;
+  top: 1.5rem;
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+}
+.journey__node::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--grad-accent);
+  box-shadow: 0 0 14px var(--glow-blue);
+  z-index: 1;
+}
+.journey__node-ring {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(120, 150, 255, 0.5);
+  animation: journeyPing 2.6s infinite;
+}
+@keyframes journeyPing {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.journey__content {
+  padding: 1.5rem 1.7rem;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.journey__content:hover {
+  border-color: rgba(77, 124, 255, 0.35);
+  transform: translateX(4px);
+}
+.journey__year {
+  font-size: 0.85rem;
+  color: var(--blue-bright);
+  font-weight: 600;
+}
+.journey__content h3 {
+  font-size: 1.2rem;
+  margin: 0.4rem 0 0.6rem;
+}
+.journey__content p {
+  color: var(--text-soft);
+  font-size: 0.98rem;
+}

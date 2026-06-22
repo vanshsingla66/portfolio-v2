@@ -1,0 +1,17 @@
+{
+  "name": "Vansh — Full Stack Developer & AI Engineer",
+  "short_name": "Vansh",
+  "description": "Portfolio of Vansh - Full Stack Developer and AI/ML enthusiast building intelligent web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05060a",
+  "theme_color": "#05060a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

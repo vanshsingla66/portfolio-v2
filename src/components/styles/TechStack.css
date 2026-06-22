@@ -1,0 +1,99 @@
+.stack__groups {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.stack__group-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.1rem;
+}
+.stack__group-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.stack__group-head h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.stack__count {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.stack__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.85rem;
+}
+
+.stack__chip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.95rem 1.1rem;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: default;
+  overflow: hidden;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.stack__chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--chip-accent) 18%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.stack__chip:hover {
+  border-color: color-mix(in srgb, var(--chip-accent) 45%, transparent);
+  background: var(--surface-2);
+}
+.stack__chip:hover::before {
+  opacity: 1;
+}
+.stack__chip:hover .stack__chip-icon {
+  color: var(--chip-accent);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--chip-accent) 60%, transparent));
+}
+
+.stack__chip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  color: var(--text-soft);
+  font-size: 1.5rem;
+  transition: color 0.3s, filter 0.3s;
+}
+.stack__chip-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 520px) {
+  .stack__items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stack__chip {
+    padding: 0.8rem;
+    gap: 0.6rem;
+  }
+}

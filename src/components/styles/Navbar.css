@@ -1,0 +1,137 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0.9rem 1.2rem;
+  transition: padding 0.4s var(--ease);
+}
+
+.nav__inner {
+  width: 100%;
+  max-width: var(--maxw);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 0.7rem 0.7rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all 0.4s var(--ease);
+}
+
+.nav--scrolled .nav__inner {
+  background: rgba(8, 10, 18, 0.6);
+  border-color: var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.8);
+}
+
+.nav__brand {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav__brand-tag {
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+.nav__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--grad-accent);
+  box-shadow: 0 0 12px var(--glow-blue);
+}
+
+.nav__links {
+  display: flex;
+  gap: 0.4rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.nav__link {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  transition: color 0.25s, background 0.25s;
+}
+.nav__link:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 1.15rem;
+  color: var(--text-soft);
+}
+.nav__actions a:hover {
+  color: var(--text);
+}
+.nav__cta {
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.5rem 1.05rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  color: var(--text) !important;
+  transition: border-color 0.25s, background 0.25s;
+}
+.nav__cta:hover {
+  border-color: var(--blue);
+  background: rgba(77, 124, 255, 0.1);
+}
+
+.nav__burger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.nav__mobile {
+  position: absolute;
+  top: 100%;
+  left: 1.2rem;
+  right: 1.2rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem;
+}
+.nav__mobile a {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  color: var(--text-soft);
+}
+.nav__mobile a:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+@media (max-width: 860px) {
+  .nav__links {
+    display: none;
+  }
+  .nav__cta {
+    display: none;
+  }
+  .nav__burger {
+    display: inline-flex;
+  }
+}
