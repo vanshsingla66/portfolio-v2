@@ -17,7 +17,15 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let last = -1;
+    const onScroll = () => {
+      // Only call setState when the boolean actually flips across the threshold.
+      const next = window.scrollY > 24 ? 1 : 0;
+      if (next !== last) {
+        last = next;
+        setScrolled(next === 1);
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);

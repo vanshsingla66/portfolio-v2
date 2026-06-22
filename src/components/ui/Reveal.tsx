@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
@@ -22,4 +23,4 @@ const Reveal = ({ children, delay = 0, y = 28, className }: RevealProps) => (
   </motion.div>
 );
 
-export default Reveal;
+export default memo(Reveal);

@@ -1,4 +1,4 @@
-import { useRef, type ReactNode, type MouseEvent } from "react";
+import { memo, useRef, type ReactNode, type MouseEvent } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface TiltCardProps {
@@ -7,12 +7,20 @@ interface TiltCardProps {
   max?: number;
 }
 
+const GLARE = 440;
+
 /**
  * 3D hover-tilt card with a cursor-tracking glare highlight.
- * Wraps content in a perspective container.
+ *
+ * Perf: the rect is cached on pointer-enter (no getBoundingClientRect per
+ * move), and the glare is a fixed-size gradient element moved with a
+ * translate3d transform — GPU-composited instead of repainting a
+ * background-position every frame.
  */
 const TiltCard = ({ children, className = "", max = 8 }: TiltCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const rect = useRef({ left: 0, top: 0, width: 1, height: 1 });
+
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
 
@@ -25,15 +33,21 @@ const TiltCard = ({ children, className = "", max = 8 }: TiltCardProps) => {
     damping: 20,
   });
 
-  const glareX = useTransform(px, [0, 1], ["0%", "100%"]);
-  const glareY = useTransform(py, [0, 1], ["0%", "100%"]);
+  // Translate the glare circle so its center tracks the cursor (transform only)
+  const glareX = useTransform(px, (v) => v * rect.current.width - GLARE / 2);
+  const glareY = useTransform(py, (v) => v * rect.current.height - GLARE / 2);
 
-  const handleMove = (e: MouseEvent) => {
+  const cacheRect = () => {
     const el = ref.current;
     if (!el) return;
-    const rect = el.getBoundingClientRect();
-    px.set((e.clientX - rect.left) / rect.width);
-    py.set((e.clientY - rect.top) / rect.height);
+    const r = el.getBoundingClientRect();
+    rect.current = { left: r.left, top: r.top, width: r.width, height: r.height };
+  };
+
+  const handleMove = (e: MouseEvent) => {
+    const r = rect.current;
+    px.set((e.clientX - r.left) / r.width);
+    py.set((e.clientY - r.top) / r.height);
   };
 
   const reset = () => {
@@ -45,6 +59,7 @@ const TiltCard = ({ children, className = "", max = 8 }: TiltCardProps) => {
     <motion.div
       ref={ref}
       className={className}
+      onMouseEnter={cacheRect}
       onMouseMove={handleMove}
       onMouseLeave={reset}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
@@ -54,18 +69,21 @@ const TiltCard = ({ children, className = "", max = 8 }: TiltCardProps) => {
         aria-hidden
         style={{
           position: "absolute",
-          inset: 0,
-          borderRadius: "inherit",
+          top: 0,
+          left: 0,
+          width: GLARE,
+          height: GLARE,
+          borderRadius: "50%",
           pointerEvents: "none",
-          background: useTransform(
-            [glareX, glareY],
-            ([gx, gy]) =>
-              `radial-gradient(420px circle at ${gx} ${gy}, rgba(120,150,255,0.12), transparent 45%)`
-          ),
+          x: glareX,
+          y: glareY,
+          willChange: "transform",
+          background:
+            "radial-gradient(circle, rgba(120,150,255,0.14), transparent 60%)",
         }}
       />
     </motion.div>
   );
 };
 
-export default TiltCard;
+export default memo(TiltCard);

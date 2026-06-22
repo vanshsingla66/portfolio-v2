@@ -1,4 +1,4 @@
-import { useRef, type ReactNode, type MouseEvent } from "react";
+import { memo, useRef, type ReactNode, type MouseEvent } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 interface MagneticButtonProps {
@@ -23,17 +23,23 @@ const MagneticButton = ({
   strength = 0.4,
 }: MagneticButtonProps) => {
   const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
+  const center = useRef({ x: 0, y: 0 });
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 220, damping: 18, mass: 0.4 });
   const sy = useSpring(y, { stiffness: 220, damping: 18, mass: 0.4 });
 
-  const handleMove = (e: MouseEvent) => {
+  // Cache the element center on enter so move handling does no layout reads.
+  const cacheCenter = () => {
     const el = ref.current;
     if (!el) return;
-    const rect = el.getBoundingClientRect();
-    x.set((e.clientX - (rect.left + rect.width / 2)) * strength);
-    y.set((e.clientY - (rect.top + rect.height / 2)) * strength);
+    const r = el.getBoundingClientRect();
+    center.current = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  };
+
+  const handleMove = (e: MouseEvent) => {
+    x.set((e.clientX - center.current.x) * strength);
+    y.set((e.clientY - center.current.y) * strength);
   };
 
   const reset = () => {
@@ -45,6 +51,7 @@ const MagneticButton = ({
     ref: ref as never,
     className: `btn ${className}`,
     style: { x: sx, y: sy },
+    onMouseEnter: cacheCenter,
     onMouseMove: handleMove,
     onMouseLeave: reset,
     whileTap: { scale: 0.96 },
@@ -70,4 +77,4 @@ const MagneticButton = ({
   );
 };
 
-export default MagneticButton;
+export default memo(MagneticButton);

@@ -1,4 +1,4 @@
-import type { ComponentType } from "react";
+import { memo, type ComponentType } from "react";
 import {
   SiPython,
   SiJavascript,
@@ -70,4 +70,4 @@ const TechIcon = ({ icon, size = 26 }: { icon: string; size?: number }) => {
   return <Comp size={size} />;
 };
 
-export default TechIcon;
+export default memo(TechIcon);
