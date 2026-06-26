@@ -1,7 +1,7 @@
 {
-  "name": "Vansh — Full Stack Developer & AI Engineer",
+  "name": "Vansh — Full Stack Developer & AI Developer",
   "short_name": "Vansh",
-  "description": "Portfolio of Vansh - Full Stack Developer and AI/ML enthusiast building intelligent web applications.",
+  "description": "Vansh is a B.Tech Computer Science student at GLA University and a Full Stack Developer specializing in MERN, Python, AI tools, and modern web applications.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#05060a",
@@ -11,7 +11,19 @@
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

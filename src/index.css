@@ -3,7 +3,8 @@
    Dark premium developer aesthetic · electric blue/purple glow
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap");
+/* Fonts (Inter + JetBrains Mono) are preconnected & loaded in index.html
+   <head> for faster, non-render-blocking delivery. */
 
 :root {
   /* --- Surfaces --- */
