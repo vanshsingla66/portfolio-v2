@@ -16,6 +16,7 @@ export default defineConfig({
             if (id.includes("framer-motion") || id.includes("motion-dom") || id.includes("motion-utils"))
               return "framer-motion";
             if (id.includes("react-icons")) return "icons";
+            if (id.includes("lenis")) return "smooth";
             if (id.includes("react-dom") || id.includes("react") || id.includes("scheduler"))
               return "react";
           }
